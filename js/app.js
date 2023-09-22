@@ -24,14 +24,15 @@ testSum(4, 7);
 
 /////////////////////////////////////
 /* Problem 2
-Write a function called multiply() that takes in two numbers as arguments and returns an array where the first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
+Write a function called multiply() that takees in two numbers as arguments and returns an array where the first element is the product of those numbers, and the second element is a string that EXACTLY follows this example and uses the values that were input into the function:
 
 "The product of 5 and 9 is 45."
 
-Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiply() function and see if the test passes.*/
+Test this function by hand in the console to get it working, and when you think it is finishd, uncomment the call for the testMultiply() function and see if the test passes.*/
 
 // Write your code here
 //eslint-disable-line
+
 function multiply(a, b) {
   let answer = [];
   answer[0] = a * b;
@@ -56,12 +57,22 @@ IMPORTANT DETAIL: You may not use the arithmetic operators + and * in this funct
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumAndMultiply() function and see if the test passes.*/
 
 // Write your code here
+//eslint-disable-line
+
 function sumAndMultiply(a, b, c) {
-  //eslint-disable-line
+  let sum1 = sum(a, b)[0];
+  let sum2 = sum(sum1, c)[0];
+
+  let product1 = multiply(a, b)[0];
+  let product2 = multiply(product1, c)[0];
+
+  let thirdElement = `${a} and ${b} and ${c} sum to ${sum2}.`;
+  let fourthElement = `The product of ${a} and ${b} and ${c} is ${product2}.`;
+  return [sum2, product2, thirdElement, fourthElement];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4, 7, 5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -76,15 +87,31 @@ IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
-let testArray = [2, 3, 4]; //eslint-disable-line
+//eslint-disable-line
+
+let testArray = [2, 3, 4];
 
 function sumArray(sumArr) {
-  //eslint-disable-line
+  // Initialize a variable to store the sum
+  let sumResult = 0;
+
+  // Calculate the sum using the sum() function
+  for (let i = 0; i < sumArr.length; i++) {
+    sumResult = sum(sumResult, sumArr[i]);
+  }
+
+  // Create the second element as a string with the desired format
+  let formattedString = `${testArray} was passed in as an array of numbers, and ${sumResult} is their sum.`;
+
+  // Return an array with the sum and the formatted string
+  return [sumResult, formattedString];
 }
+
+//eslint-disable-line
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
